@@ -1,0 +1,15 @@
+## PARSER
+import json
+def parse(finput):
+    for line in finput:
+        yield json.loads(line[1:])
+## TEST
+import sys
+with open(sys.argv[1] + '/input') as fpin:
+    res = list(parse(fpin))
+with open(sys.argv[1] + '/first-value') as fpin:
+    first = json.loads(fpin.read())
+if first != res[0]:
+    sys.exit(f"Expected: {first}\nGot: {res}")
+print("Success")
+
